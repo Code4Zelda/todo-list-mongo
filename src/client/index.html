@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css">
+  <!-- <script src="prescript.js"></script> -->
+  <script>
+    fetch('/todo/all')
+      .then(result => {
+        // console.log(result);
+        return result.json();
+      })
+      .then(items => {
+        items = Object.values(items);
+        items = items[0];
+        const orderedList = document.createElement('ol');
+        items.forEach(item => {
+          const listItem = document.createElement('li');
+          listItem.innerText = item.todoItem;
+          return orderedList.appendChild(listItem);
+        })
+        document.body.appendChild(orderedList)
+      })
+
+
+
+  </script>
+</head>
+
+<body>
+  <h1>Hello World!</h1>
+
+  <input type="text" placeholder='just a test man' id='testInput'>
+  <button id='testButton'>Add TODO</button>
+
+
+</body>
+<script src="script.js"></script>
+
+</html>
